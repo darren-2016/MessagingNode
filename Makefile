@@ -2,11 +2,12 @@
 
 -include config.mk
 
+LDFLAGS = -lcurl
 
 %.o: %.c 
 	$(CC) -c $(CFLAGS) $< -o $@
 
-MessagingNode: MessagingNode.o 
+MessagingNode: MessagingNode.o
 	$(CC) $(LDFLAGS) $^ -o $@
 
 clean:
