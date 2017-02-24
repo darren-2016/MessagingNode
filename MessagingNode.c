@@ -1,6 +1,12 @@
 
+/************************************************************
+ * MessagingNode.c
+ * Darren J. Draper
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
+#include <curl/curl.h>
 
 
 /************************************************************
@@ -15,7 +21,9 @@ void modemSend(char *message)
 
 /************************************************************
  * Function:    WorkerPending
- * Description: 
+ * Description: Check for message.  There will either be one 
+ *              message or none.  The response will contain 
+ *              a message and a taskname.
  * Returns:     void
  */
 void WorkerPending()
@@ -57,6 +65,8 @@ void WorkerReceived()
  */
 int main()
 {
+    CURL *curl = curl_easy_init();
+
     printf ("Messaging Node\n");
 
     WorkerPending();
